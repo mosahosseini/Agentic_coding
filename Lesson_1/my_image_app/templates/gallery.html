@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        .image-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Our Image Gallery</h1>
+    <p><a href="/">Back to Home</a></p>
+
+    {% for image in images %}
+    <div class="image-container">
+        <h3>{{ image.title }}</h3>
+        <a href="{{ url_for('show_image', image_name=image.name) }}">
+            <img src="{{ url_for('static', filename='images/' + image.name) }}" alt="{{ image.title }}">
+        </a>
+        <p><a href="{{ url_for('show_image', image_name=image.name) }}">View Details</a></p>
+    </div>
+    {% endfor %}
+
+</body>
+</html>

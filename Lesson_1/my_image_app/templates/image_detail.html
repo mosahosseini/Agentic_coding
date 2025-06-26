@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Details: {{ image_name }}</title>
+    <style>
+        .detail-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .detail-container img {
+            max-width: 80%;
+            height: auto;
+            border: 2px solid #333;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="detail-container">
+        <h1>Image: {{ image_name }}</h1>
+        <p><a href="/gallery">Back to Gallery</a></p>
+        <img src="{{ url_for('static', filename='images/' + image_name) }}" alt="Detailed Image">
+    </div>
+</body>
+</html>
