@@ -29,5 +29,16 @@ def get_todos(first_n = None):
     else:
         return all_todos
 
+@app.post("/todos")
+def create_todo(n_todo:dict): #assuming the provided data is {"todo_name": . , "todo_describtion": "..."}
+    new_todo_id = max([todo["todo_id"] for todo in all_todos])+1
+    new_todo = {
+        "todo_id" : new_todo_id,
+        "todo_name" : n_todo["todo_name"],
+        "todo_describtion" : n_todo["todo_describtion"]
+    }
+    
+    all_todos.append(new_todo)
+    return new_todo
 if __name__ == "__main__":
     print(all_todos[:2])

@@ -127,9 +127,59 @@ async def get_todos(first_n = None):
 ``` 
 
 ## POST method
+It is used to create a new data object or adding new data to database. Now there is a much better way of writing the api code, but for the sake of simplicity we first learn how do to it in a unconventional way, Then analyse the problem with this and atlast, we represent solution. We can write the post method in the following way. 
 
+**Example**
+```py
+@app.post("/todos/")
+def create_todo(n_todo:dict): #assuming the provided data is {"todo_name": . , "todo_describtion": "..."}
+    new_todo_id = max([todo["todo_id"] for todo in all_todos])+1
+    new_todo = {
+        "todo_id": new_todo_id
+        "todo_name":n_todo["todo_name"],
+        "todo_describtion": n_todo["todo_describtion"]
+    }
+    all_todos.append(new_todo)
+    return new_todo
+```
 
+## UPDATE method
+Update is used when we want to update an excisting data in the database. Here is how we do it in a unconventional way. 
 
+**Example**
+```py
+@app.update("/todos/")
+def update_todo(todo_id:int , updated_todo:dict):
+    for todo in all_todos:
+        if todo["todo_id"]==todo_id:
+            todo["todo_name"]= updated_todo["todo_name"]
+            todo["todo_describtion"] = updated_todo["todo_describtion"]
+            return todo
+    
+    return "Error: the Todo with the todo_id:"+str(todo_id)+" is does not exist in the database"
+```
+
+## DELETE method
+Delete method is used to delete a data from database. 
+
+**Example**
+
+```py
+@app.delete("/todos/")
+def delete_todo(todo_id:int):
+
+    for idx , todo  in enumerate(all_todos):
+        if todo["todo_id"] == todo_id:
+            all_todo.pop(idx)
+            return todo
+    
+    return "Error: The todo_id" + int(todo_id) + " does not exist in the data"
+```
+# How to Post / update / delete ? 
+You can use the requests package or apps like postman to post to the server. But fast api provides a better tool for this. if you write `/docs` when after the port you will be redirected to a UI called swagger UI where you can test all http methods. 
+here you can also see the documentation of each method you have created.
+# Automatic Documentation
+One of the strenth of fast api is automatic documentation In order to use it we need to follow a convention and use some additional packages. It also make use the type safety of the code. In the next section we will see how we can rewrite the http methods to follow the convention.
 
 # How to run the code
 Put your code in a python file and call it whatever you like, in our case we call it main.py.
