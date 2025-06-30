@@ -181,6 +181,8 @@ here you can also see the documentation of each method you have created.
 # Automatic Documentation
 One of the strenth of fast api is automatic documentation In order to use it we need to follow a convention and use some additional packages. It also make use the type safety of the code. In the next section we will see how we can rewrite the http methods to follow the convention.
 
+# How do you write it
+
 # How to run the code
 Put your code in a python file and call it whatever you like, in our case we call it main.py.
 There is two way to run the code: 
