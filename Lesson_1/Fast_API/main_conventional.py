@@ -44,7 +44,7 @@ def get_todo(todo_id:int):
     raise HTTPException(status_code=404,detail= "Todo not found" )   
       
 @app.get("/todos" , response_model= List[Todo])
-def get_todos(first_n:int):
+def get_todos(first_n:int =None):
     if first_n:
         return all_todos[:first_n]
     else:
@@ -52,8 +52,8 @@ def get_todos(first_n:int):
 
 @app.post("/todos" , response_model=Todo)
 def create_todo(todo: TodoCreate):
-    new_todo_id = max(todoo.todo_id for todoo in all_todos)+1
-    new_todo = Todo(todo_id = new_todo_id ,todo_name= todo.todo_name , todo_priority= todo.Priority , todo_description= todo.description)
+    new_todo_id = max([todoo.todo_id for todoo in all_todos])+1
+    new_todo = Todo(todo_id = new_todo_id ,todo_name= todo.todo_name , todo_priority= todo.todo_priority , todo_description= todo.todo_description)
     all_todos.append(new_todo)
     return new_todo
 
@@ -62,7 +62,8 @@ def update_todo(todo_id:int , updated_todo: TodoUpdate):
     for todo in all_todos:
         if todo.todo_id == todo_id:
             todo.todo_name = updated_todo.todo_name
-            todo.todo_description = updated_todo.todo_describtion
+            todo.todo_description = updated_todo.todo_description
+            todo.todo_priority = updated_todo.todo_priority
             return todo
     raise HTTPException(status_code= 404 , detail = "Todo not found")
 
