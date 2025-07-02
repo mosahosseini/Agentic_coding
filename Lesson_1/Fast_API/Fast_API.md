@@ -18,6 +18,42 @@ A RESTful API refers to an API that adheres to the principles and constraints of
 # Fast API is a REST full api
 Fast API is a REST full api meaning that it support standard HTML methods like get, post , put and delete.
 
+
+
+# Asyncio
+asyncio is a Python library used for writing concurrent code using async/await syntax. It’s great for handling I/O-bound and event-driven tasks without using threads or processes.
+
+**Example**
+```py
+import asyncio
+
+class Agent:
+    def __init__(self, name):
+        self.name = name
+
+    async def run(self):
+        while True:
+            print(f"{self.name} is thinking...")
+            await asyncio.sleep(1)  # simulate processing time
+            print(f"{self.name} decided to do something!")
+            await asyncio.sleep(2)  # simulate acting
+
+async def main():
+    agent1 = Agent("Agent A")
+    agent2 = Agent("Agent B")
+
+    await asyncio.gather(
+        agent1.run(),
+        agent2.run()
+    )
+
+asyncio.run(main())
+
+```
+
+This sets up two agents that run concurrently without using threads. Each agent independently "thinks" and "acts" in a loop.
+
+
 # Function decorators: 
 A function decorator in Python is a design pattern that allows you to modify or enhance the behavior of a function without changing its code. Decorators are often used for things like logging, access control, memoization (caching), timing, and more.
 

@@ -15,5 +15,10 @@
   - [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/) 
 
 
+  ## Fast API: 
+  Read the dockument under Fast_API folder. I have explained it there with an implementation example.
 
-  Fast API and Flask API should be explained. 
+  ## Resuests package: 
+  Requests package and Flask api is explained in request.ipynb. 
+
+  
