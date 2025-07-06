@@ -7,7 +7,7 @@ load_dotenv()
 api =   os.getenv('api_key')
 
 
-client = OpenAI(api_key = api) 
+client = OpenAI(api_key = api , base_url="https://api.deepseek.com") 
 
 conversation = [
     {"role": "system", "content": "You are a helpful assistant."}
@@ -26,7 +26,7 @@ while (True):
     conversation.append({"role":"user" , "content": user_input})
     try:
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="deepseek-chat",
             messages=conversation,
             temperature=0.7,
             max_tokens=512 
