@@ -39,6 +39,27 @@ There are alot of opensoruce models available on huggingface. Therer you can fin
 
 
 
+## Prompt
+An important part of the LLM is the instruction you give to it. It can be a question or instruction , and it will guid the llm to generate the answer. 
+
+### Zero-shot 
+When you provide the prompt without the example of input output. Forexample: What is the capital of Paris? 
+
+### Few-shot
+When you provide the prompt with number of input output example in order to guide the answers. 
+
+
+Translate everything i write from now on to swedish? 
+
+Example: 
+
+User: Hi how are you?
+Assistant: Hej hur mår du?
+
+
+
+
+
 
 Exercise:
 Create a CLI chatbot using gpt-3.5-turbo.
