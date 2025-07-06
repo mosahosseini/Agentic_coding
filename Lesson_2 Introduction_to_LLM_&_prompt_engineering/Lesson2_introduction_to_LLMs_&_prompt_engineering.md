@@ -6,7 +6,30 @@
 3. Basic prompting (zero-shot, few-shot)
 
 ## 1 How LLMs work
-LLM stand for Large Language Models and is the AI breakthrough of the recent years. Language models a predictive model that are used to predict the next token/word given n previouse word. I will not go though the transformer architecture in datail i will just give you a quick overview on how does it work and how the chat interfaces like chatgpt are built. 
+LLM stand for Large Language Models and is the AI breakthrough of the recent years. Language models a predictive model that are used to predict the next token/word given n previouse word. I will not go though the transformer architecture in datail i will just give you a quick overview on how does it work and how the chat interfaces like chatgpt are built.  So language model will generate the next word give the n previouse word/token. How can the chatbots use it? For this purpose they train the transformer with pair of questions and answers , and add a special charachter at the end of the chats `<\EOS>` special charachter for terminating the generation of the text. Now when you ask a question , the language model will also generate the special charachter. This special charachter is used to stop the generation. 
+
+
+
+## OpenAI API /Hugging Face transformers. 
+
+You can use openAi with api and here is how :
+
+```
+import openai
+
+openai.api_key = "your-api-key"
+
+response = openai.ChatCompletion.create(
+    model="gpt-4",
+    messages=[
+        {"role": "user", "content": "Tell me a joke"}
+    ]
+)
+
+print(response['choices'][0]['message']['content'])
+```
+
+You will ofcouse need an api
 
 
 Exercise:
